@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+
+{% block start %}
+
+<h2 class='text-center m-5'>This family members list is:</h2>
+
+<table class="container text-center mb-4">
+  <tr class="fs-4 fw-bold">
+    <td>S/N</td>
+    <td>Family Name</td>
+    <td>Name</td>
+    <td>Age</td>
+    <td>Can vote</td>
+  </tr>
+  {% for people in peoples %}
+  <tr>
+    <td>{{forloop.counter}}. {{text | truncatechars_html:10 }}</td>
+    <td>{{people.familyName}}</td>
+    <td>{{people.name}}</td>
+    <td>{{people.age }}</td>
+    <td {% if people.age >= 18 %} style ='background : green' {% else %} style ='background :red' {% endif %} > {% if people.age >= 18 %} Yes {% else %} No {% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<p>{{text | truncatechars_html:80 }}</p>
+
+<p>{% if 'Cucumber' in vegetable %} Yes {% else%} NO {% endif %}</p>
+
+
+{% endblock %}

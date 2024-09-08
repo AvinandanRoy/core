@@ -1,0 +1,32 @@
+{% block start %}
+
+<div class='container'>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Receipe Name </th>
+        <th scope="col">Receipe Description</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        {% for receipe in receipes  %}
+
+            <tr>
+                <th> {{ receipe.id }} </th>
+                <td>{{ receipe.recipe_name  }}</td>
+                <td>{{ receipe.recipe_des | truncatechars_html:60}}</td>
+                <td class= ''> 
+                  <img src="/media/{{receipe.recipe_img}}" alt="Receipe-image" style=" height: 100px; object-fit: cover;" class='w-100'>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
